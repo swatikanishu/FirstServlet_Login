@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
     @WebServlet(description = "Login Servlet Testing", urlPatterns = { "/LoginServlet" }, initParams = {
-            @WebInitParam(name = "user", value = "Swatika"), @WebInitParam(name = "password", value = "43567") })
+            @WebInitParam(name = "user", value = "Swatika"), @WebInitParam(name = "password", value = "4A3567@89s") })
     public class LoginServlet extends HttpServlet {
         @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,9 +23,12 @@ import javax.servlet.http.HttpServletResponse;
             String userID = getServletConfig().getInitParameter("user");
             String password = getServletConfig().getInitParameter("password");
             String nameValidate = "^[A-Z]{1}[a-z]{2,}";
-            if(userID.equals(user) && userID.matches(nameValidate) && password.equals(pwd)) {
+            String passwordValidate = "^(?=.*[A-Z])(?=.*[0-9])([a-zA-Z0-9@._-]).{8,}$";
+
+            if(userID.equals(user) && userID.matches(nameValidate) && password.equals(pwd) && password.matches(passwordValidate)) {
                 request.setAttribute( "user", user);
                 request.getRequestDispatcher("LoginSuccess.jsp").forward (request,response);
+
             } else {
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/Login.html");
                 PrintWriter out = response.getWriter();
