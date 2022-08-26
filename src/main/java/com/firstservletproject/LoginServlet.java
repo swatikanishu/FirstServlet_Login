@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
     @WebServlet(description = "Login Servlet Testing", urlPatterns = { "/LoginServlet" }, initParams = {
             @WebInitParam(name = "user", value = "Swatika"), @WebInitParam(name = "password", value = "4A3567@89s") })
     public class LoginServlet extends HttpServlet {
