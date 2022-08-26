@@ -20,11 +20,12 @@ import javax.servlet.http.HttpServletResponse;
             String user = request.getParameter("user");
 
             String pwd = request.getParameter("pwd");
-            String userId = getServletConfig().getInitParameter("user");
+            String userID = getServletConfig().getInitParameter("user");
             String password = getServletConfig().getInitParameter("password");
-            if (userId.equals(user) && password.equals(pwd)) {
-                request.setAttribute("user", user);
-                request.getRequestDispatcher("LoginSuccess.jsp").forward(request, response);
+            String nameValidate = "^[A-Z]{1}[a-z]{2,}";
+            if(userID.equals(user) && userID.matches(nameValidate) && password.equals(pwd)) {
+                request.setAttribute( "user", user);
+                request.getRequestDispatcher("LoginSuccess.jsp").forward (request,response);
             } else {
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/Login.html");
                 PrintWriter out = response.getWriter();
